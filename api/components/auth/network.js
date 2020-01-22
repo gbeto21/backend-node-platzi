@@ -9,6 +9,7 @@ router.post('/login', function (req, res) {
             response.success(req, res, token, 200)
         })
         .catch(e => {
+            console.error(e);
             response.error(req, res, 'Información inválida', 400)
         })
 })

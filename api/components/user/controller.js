@@ -18,7 +18,7 @@ module.exports = function (injectedStore) {
         return store.get(TABLA, id)
     }
 
-    async function upsert(body) {
+    async function upsert(body, insert) {
 
         const user = {
             name: body.name,
@@ -38,10 +38,10 @@ module.exports = function (injectedStore) {
                 id: user.id,
                 username: user.username,
                 password: body.password
-            })
+            }, insert)
         }
 
-        return store.upsert(TABLA, user)
+        return store.upsert(TABLA, user, insert)
     }
 
     return {

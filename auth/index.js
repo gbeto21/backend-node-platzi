@@ -4,7 +4,15 @@ const error = require('../utils/error')
 const secret = config.jwt.secret
 
 function sign(data) {
-    return jwt.sign(data, secret)
+    let userData = {
+
+        id: data.id,
+        password: data.password,
+        username: data.username
+    }
+
+    return jwt.sign(userData, secret)
+    // return jwt.sign(data, secret)
 }
 
 function verify(token) {

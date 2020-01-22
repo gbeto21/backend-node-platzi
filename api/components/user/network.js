@@ -6,8 +6,10 @@ const controller = require('./index')
 
 router.get('/', list)
 router.get('/:id', get)
-router.post('/', upsert)
-router.put('/', secure('update'), upsert)
+router.post('/', insert)
+router.put('/', secure('update'), update)
+
+let insertValue = false
 
 function list(req, res, next) {
 
@@ -26,9 +28,20 @@ function get(req, res, next) {
         .catch(next)
 }
 
-function upsert(req, res, next) {
+function insert(req, res, next) {
 
-    controller.upsert(req.body)
+    insertValue = true
+    controller.upsert(req.body, insertValue)
+        .then((user) => {
+            response.success(req, res, user, 201)
+        })
+        .catch(next)
+}
+
+function update(req, res, next) {
+
+    insertValue = false
+    controller.upsert(req.body, insertValue)
         .then((user) => {
             response.success(req, res, user, 201)
         })
