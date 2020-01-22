@@ -44,10 +44,20 @@ module.exports = function (injectedStore) {
         return store.upsert(TABLA, user, insert)
     }
 
+    function follow(from, to) {
+        let insert = true
+
+        return store.upsert(TABLA + "_follow", {
+            user_from: from,
+            user_to: to
+        }, insert)
+    }
+
     return {
         list,
         get,
-        upsert
+        upsert,
+        follow
     }
 }
 

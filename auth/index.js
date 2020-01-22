@@ -12,7 +12,6 @@ function sign(data) {
     }
 
     return jwt.sign(userData, secret)
-    // return jwt.sign(data, secret)
 }
 
 function verify(token) {
@@ -28,6 +27,10 @@ const check = {
             throw error('No puedes hacer esto', 401)
         }
 
+    },
+
+    logged: function (req, owner) {
+        const decoded = decodeHeader(req)
     }
 }
 

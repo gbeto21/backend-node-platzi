@@ -12,6 +12,12 @@ module.exports =
                     next()
                     break
 
+                case 'follow':
+                    auth.check.logged(req)
+                    next()
+                    break
+
+
                 default:
                     next()
 

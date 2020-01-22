@@ -5,7 +5,8 @@ const response = require('../../../network/response')
 const controller = require('./index')
 
 router.get('/', list)
-router.get('/:id', get)
+router.post('/follow/:id', follow)
+router.get('/:id', secure('follow'), get)
 router.post('/', insert)
 router.put('/', secure('update'), update)
 
@@ -44,6 +45,14 @@ function update(req, res, next) {
     controller.upsert(req.body, insertValue)
         .then((user) => {
             response.success(req, res, user, 201)
+        })
+        .catch(next)
+}
+
+function follow(req, res, next) {
+    controller.follow(req.body.id, req.params.id)
+        .then(data => {
+            response.success(req, res, data, 201)
         })
         .catch(next)
 }
