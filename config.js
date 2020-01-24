@@ -1,4 +1,5 @@
 module.exports = {
+    remoteDB: process.env.REMOTE_DB || false,
     api: {
         port: process.env.API_PORT || 3000
     },
@@ -19,3 +20,4 @@ module.exports = {
         port: process.env.MYSQL_SRV_PORT || 3001,
     }
 }
+//https://backend-node-platzi.gbeto21.now.sh
