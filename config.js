@@ -10,10 +10,10 @@ module.exports = {
         secret: process.env.JWT_SECRET || 'notasecret!',
     },
     mysql: {
-        host: process.env.MYSQL_HOST || 'remotemysql.com',
-        user: process.env.MYSQL_USER || 'rXwabxnnRi',
-        password: process.env.MYSQL_PASS || '7Vw6D2zjg4',
-        database: process.env.MYSQL_DB || 'rXwabxnnRi',
+        host: process.env.MYSQL_HOST || '',
+        user: process.env.MYSQL_USER || '',
+        password: process.env.MYSQL_PASS || '',
+        database: process.env.MYSQL_DB || '',
     },
     mysqlService: {
         host: process.env.MYSQL_SRV_PORT || 'localhost',
